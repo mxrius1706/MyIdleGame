@@ -13,7 +13,6 @@ Ein 2D Idle Game in Unity – aktuell noch in der Entwicklungsphase. Das Spiel l
 - 🎞️ **Animator-gesteuerte Zustände** über StateMachineBehaviours
 - 🏞️ **Parallax-Hintergründe** für mehr optische Tiefe
 - 🔍 **Ziel- & Kontakt-Erkennung** über Raycasts (TouchingDirections)
-- 🎮 **Neues Unity Input System** für moderne, zukunftssichere Steuerung
 - 💥 **Schadenssystem:** Sowohl Gegner als auch der Spieler können jetzt Schaden nehmen und sterben
 
 
