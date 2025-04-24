@@ -1,8 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.TextCore.Text;
+
 
 public class Damageable : MonoBehaviour
 {
@@ -102,10 +106,9 @@ public class Damageable : MonoBehaviour
             IsInvincible = true;
             animator.SetTrigger(AnimationStrings.hitTrigger);
             LockVelocity = true;
-
-            
             damageableHit?.Invoke(dmg, knockback);
-
+            CharacterEvents.characterDamaged.Invoke(dmg, gameObject);
+            
             return true;
         }
 
@@ -138,3 +141,4 @@ public class Damageable : MonoBehaviour
 
     }
 }
+

@@ -8,6 +8,8 @@ public class BOD : MonoBehaviour
 
 {
     public DetectionZone attackZone;
+    
+    public DetectionZone groundZone;
     public float walkSpeed = 3f;
     public float WalkStopRate = 0.6f;
     Rigidbody2D rb;
@@ -95,7 +97,7 @@ public class BOD : MonoBehaviour
     private void FixedUpdate()
     {
 
-        if (touchingDirections.IsOnWall && touchingDirections.isGrounded)
+        if (touchingDirections.IsOnWall && touchingDirections.isGrounded || groundZone.detectedColliders.Count == 0)
         {
 
             FlipDirection();
@@ -154,11 +156,16 @@ public class BOD : MonoBehaviour
         {
             hasTargets = false;
         }
+
+       
     }
 
-    public void OnHit (int dmg, Vector2 knockback) {
 
-        rb.velocity = new Vector2 (knockback.x, knockback.y + rb.velocity.y);
+
+    public void OnHit(int dmg, Vector2 knockback)
+    {
+    
+        // Apply knockback
+        rb.velocity = new Vector2(knockback.x, knockback.y + rb.velocity.y);
     }
-
 }

@@ -28,13 +28,9 @@ public class Attack : MonoBehaviour
             //macht knockback rückwärst wenn gegner weg von uns läuft
             Vector2 deliveredKnockback = transform.parent.localScale.x > 0 ? knockback : new Vector2 (-knockback.x, knockback.y);
 
-            bool gotHit = damageable.hit (attackDamage, deliveredKnockback);
+            bool gotHit = damageable.hit(attackDamage, deliveredKnockback);
            
 
-            if (gotHit) {
-
-                 Debug.Log (collision.name + "hit for " + attackDamage);
-            }
         }
     }
 }

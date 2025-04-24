@@ -19,7 +19,6 @@ public class SetBooleanBehaviour : StateMachineBehaviour
     {
         if (updateOnState)
         {
-             Debug.Log("OnStateEnter: Setting " + boolName + " to " + valueonEnter);
             animator.SetBool(boolName, valueonEnter);
         }
     }
