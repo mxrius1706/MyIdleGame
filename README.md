@@ -24,7 +24,7 @@ Ein 2D Idle Game in Unity – aktuell noch in der Entwicklungsphase. Das Spiel l
 - 🔍 **Ziel- & Kontakt-Erkennung** über Raycasts (TouchingDirections)
 - 💥 **Schadenssystem:** Sowohl Gegner als auch der Spieler können Schaden nehmen und sterben
 - 💬 **Damage-Anzeige:** Sichtbare Rückmeldung bei Treffern (Floating Damage Text)
-- 🧱 **Gegner-KI erweitert:** Gegner erkennen Klippen und drehen um (Edge Detection)
+- 🧱 **Gegner-KI erweitert:** Gegner erkennen Klippen und drehen um 
 
 ---
 
