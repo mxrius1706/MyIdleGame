@@ -11,6 +11,7 @@ public class BOD : MonoBehaviour
     
     public DetectionZone groundZone;
     public float walkSpeed = 3f;
+    public float maxSpeed = 3f;
     public float WalkStopRate = 0.6f;
     Rigidbody2D rb;
 
@@ -107,6 +108,8 @@ public class BOD : MonoBehaviour
 
             if (canMove)
             {
+                //Clamp beschränkt einen Wert mit Min und Max - wir wollen ja nicht schneller werden als 
+               
                 rb.velocity = new Vector2(walkSpeed * WalkDirectionVector.x, rb.velocity.y);
             }
             else

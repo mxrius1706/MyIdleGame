@@ -13,7 +13,7 @@ public class Damageable : MonoBehaviour
     public UnityEvent<int, Vector2> damageableHit;
     Animator animator;
 
-   
+
     private bool _isAlive = true;
 
     [SerializeField]
@@ -39,17 +39,17 @@ public class Damageable : MonoBehaviour
         }
     }
 
-        public bool LockVelocity 
-{ 
-    get 
+    public bool LockVelocity
     {
-        return animator.GetBool(AnimationStrings.lockVelocity);
+        get
+        {
+            return animator.GetBool(AnimationStrings.lockVelocity);
+        }
+        set
+        {
+            animator.SetBool(AnimationStrings.lockVelocity, value);
+        }
     }
-    set 
-    {
-        animator.SetBool(AnimationStrings.lockVelocity, value);
-    }
-}
 
     [SerializeField]
     private int _maxHealth = 100;
@@ -101,14 +101,14 @@ public class Damageable : MonoBehaviour
 
         if (IsAlive && !IsInvincible)
         {
-            
+
             Health -= dmg;
             IsInvincible = true;
             animator.SetTrigger(AnimationStrings.hitTrigger);
             LockVelocity = true;
             damageableHit?.Invoke(dmg, knockback);
             CharacterEvents.characterDamaged.Invoke(dmg, gameObject);
-            
+
             return true;
         }
 
@@ -117,7 +117,7 @@ public class Damageable : MonoBehaviour
 
     private void Update()
     {
-        
+
         if (IsInvincible)
         {
 
@@ -132,6 +132,32 @@ public class Damageable : MonoBehaviour
 
 
 
+
+
+    }
+
+    public bool Heal(int healAmount)
+    {
+        if (IsAlive && Health != MaxHealth)
+        {
+           
+            if (Health>= (MaxHealth - healAmount)) {
+                healAmount = MaxHealth - Health;
+            }
+
+            Health += healAmount;
+            CharacterEvents.characterHealed?.Invoke(healAmount, gameObject);
+
+           
+            if (Health > MaxHealth)
+            {
+                Health = MaxHealth;
+            }
+
+            return true;
+        }
+
+        return false;
 
     }
 
