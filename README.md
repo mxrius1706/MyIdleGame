@@ -17,7 +17,6 @@ Ein 2D Idle Game in Unity – aktuell noch in der Entwicklungsphase. Das Spiel l
 
 ## ✅ Bereits umgesetzte Features
 
-- ⏳ **Idle-Gameplay**: Fortschritt über Zeit, auch ohne aktive Eingaben
 - 🧠 **Verhaltensbasierte NPCs**: Gegner mit einfacher Logik & automatisierter Bewegung
 - 🎞️ **Animator-gesteuerte Zustände** über StateMachineBehaviours
 - 🏞️ **Parallax-Hintergründe** für mehr optische Tiefe
