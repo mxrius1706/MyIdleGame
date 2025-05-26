@@ -4,33 +4,69 @@ using UnityEngine;
 
 public class PlayOneShot : StateMachineBehaviour
 {
-    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
-    //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    [SerializeField] public AudioClip soundToPlay;
+    [SerializeField, Range(0f, 1f)] public float volume = 1f;
 
-    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
-    //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    public bool playOnEnter = true;
+    public bool playOnExit = false;
+    public bool playAfterDelay = false;
+    public float delay = 0.25f;
 
-    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    private float timeSinceEntered = 0f;
+    private bool hasDelayedSoundPlayed = false;
 
-    // OnStateMove is called right after Animator.OnAnimatorMove()
-    //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that processes and affects root motion
-    //}
+    // Für Loop-Erkennung
+    private int lastLoopCount = -1;
 
-    // OnStateIK is called right after Animator.OnAnimatorIK()
-    //override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that sets up animation IK (inverse kinematics)
-    //}
+    public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        if (playOnEnter)
+        {
+            PlaySound(animator);
+        }
+
+        timeSinceEntered = 0f;
+        hasDelayedSoundPlayed = false;
+        lastLoopCount = Mathf.FloorToInt(stateInfo.normalizedTime); // Für Looperkennung
+    }
+
+    public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        // Verzögerter Sound
+        if (playAfterDelay && !hasDelayedSoundPlayed)
+        {
+            timeSinceEntered += Time.deltaTime;
+            if (timeSinceEntered >= delay)
+            {
+                PlaySound(animator);
+                hasDelayedSoundPlayed = true;
+            }
+        }
+
+        // 🎯 NEU: Sound bei jedem Animationsloop abspielen
+        int currentLoop = Mathf.FloorToInt(stateInfo.normalizedTime);
+        if (currentLoop > lastLoopCount)
+        {
+            lastLoopCount = currentLoop;
+            PlaySound(animator);
+        }
+    }
+
+    public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        if (playOnExit)
+        {
+            PlaySound(animator);
+        }
+
+        lastLoopCount = -1;
+    }
+
+    private void PlaySound(Animator animator)
+    {
+        if (soundToPlay != null)
+        {
+            AudioSource.PlayClipAtPoint(soundToPlay, animator.transform.position, volume);
+        }
+    }
 }

@@ -421,6 +421,24 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!114 &-3451112195197280585
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dad8a11b020feff439568bc72c511628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundToPlay: {fileID: 8300000, guid: 711125699ba15234085df19cdd05cc52, type: 3}
+  volume: 1
+  playOnEnter: 1
+  playOnExit: 0
+  playAfterDelay: 0
+  delay: 0.25
 --- !u!1101 &-3095715659883799605
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -632,7 +650,8 @@ AnimatorState:
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -8660886680046825472}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: -3451112195197280585}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -891,6 +910,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dad8a11b020feff439568bc72c511628, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundToPlay: {fileID: 8300000, guid: 3ac7e22edca0eca4d99ac65818b64f0d, type: 3}
+  volume: 1
+  playOnEnter: 1
+  playOnExit: 0
+  playAfterDelay: 0
+  delay: 0.25
 --- !u!1109 &2173047300452626071
 AnimatorTransition:
   m_ObjectHideFlags: 1
@@ -953,6 +978,24 @@ MonoBehaviour:
   valueonExit: 1
   updateOnStatemachine: 1
   updateOnState: 0
+--- !u!114 &2525174858191547704
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dad8a11b020feff439568bc72c511628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundToPlay: {fileID: 8300000, guid: 3ac7e22edca0eca4d99ac65818b64f0d, type: 3}
+  volume: 1
+  playOnEnter: 1
+  playOnExit: 0
+  playAfterDelay: 0
+  delay: 0.25
 --- !u!1101 &3368889828761825204
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -1083,7 +1126,8 @@ AnimatorState:
   m_Transitions:
   - {fileID: -8750228608663854745}
   - {fileID: -4499250748392352024}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 2525174858191547704}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
